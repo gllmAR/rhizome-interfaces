@@ -26,31 +26,31 @@
 
 
 <div>
-<input id="/adc.gain.slider" type="range" min="0" max="1" value="0" step=".001" oninput="rhizome.send('/adc.gain',[value])">
+<input id="/adc.gain.slider" type="range" min="0" max="1" value="0" step=".001" oninput="rhizome.send('/adc.gain',[parseFloat(value)])">
      /adc.gain
 <span id="/adc.gain.label"></span>
 </div>
 
 <div>
-<input id="/vcf.freq.slider" type="range" min="0" max="4000" value="0" step="0" oninput="rhizome.send('/vcf.freq',[value])">
+<input id="/vcf.freq.slider" type="range" min="0" max="4000" value="0" step="0" oninput="rhizome.send('/vcf.freq',[parseFloat(value)])">
      /vcf.freq
 <span id="/vcf.freq.label"></span>
 </div>
 
 <div>
-<input id="/vcf.q.slider" type="range" min="0" max="5" value="0" step=".001" oninput="rhizome.send('/vcf.q',[value])">
+<input id="/vcf.q.slider" type="range" min="0" max="5" value="0" step=".001" oninput="rhizome.send('/vcf.q',[parseFloat(value)])">
      /vcf.q
 <span id="/vcf.q.label"></span>
 </div>
 
 <div>
-<input id="/rev.wet.slider" type="range" min="0" max="1" value="0" step=".001" oninput="rhizome.send('/rev.wet',[value])">
+<input id="/rev.wet.slider" type="range" min="0" max="1" value="0" step=".001" oninput="rhizome.send('/rev.wet',[parseFloat(value)])">
      /rev.wet
 <span id="/rev.wet.label"></span>
 </div>
 
 <div>
-<input id="/dac.gain.slider" type="range" min="0" max="1" value="0" step=".001" oninput="rhizome.send('/dac.gain',[value])">
+<input id="/dac.gain.slider" type="range" min="0" max="1" value="0" step=".001" oninput="rhizome.send('/dac.gain',[parseFloat(value)])">
      /dac.gain
 <span id="/dac.gain.label"></span>
 </div>
