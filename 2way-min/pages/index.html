@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Rhizome Interface 1</title>
+  <script src="/rhizome/rhizome.js"></script>
+
+  <script>
+     (function() {
+         console.log('starting....')
+         rhizome.start(function(err) {
+           if (err) throw err
+           rhizome.send('/sys/subscribe', ['/'])
+         })
+         rhizome.on('message', function(addr, args) {
+           //console.log('received:', addr, args)
+           document.getElementById(addr+".slider").value = (args[0])
+           document.getElementById(addr+".label").innerHTML = (args[0])
+         })
+         rhizome.on('connected', function() { console.log('connected') })
+     })();
+   </script>
+
+</head>
+
+<body >
+
+
+<div>
+<input id="/adc.gain.slider" type="range" min="0" max="1" value="0" step=".001" oninput="rhizome.send('/adc.gain',[value])">
+     /adc.gain
+<span id="/adc.gain.label"></span>
+</div>
+
+<div>
+<input id="/vcf.freq.slider" type="range" min="0" max="4000" value="0" step="0" oninput="rhizome.send('/vcf.freq',[value])">
+     /vcf.freq
+<span id="/vcf.freq.label"></span>
+</div>
+
+<div>
+<input id="/vcf.q.slider" type="range" min="0" max="5" value="0" step=".001" oninput="rhizome.send('/vcf.q',[value])">
+     /vcf.q
+<span id="/vcf.q.label"></span>
+</div>
+
+<div>
+<input id="/rev.wet.slider" type="range" min="0" max="1" value="0" step=".001" oninput="rhizome.send('/rev.wet',[value])">
+     /rev.wet
+<span id="/rev.wet.label"></span>
+</div>
+
+<div>
+<input id="/dac.gain.slider" type="range" min="0" max="1" value="0" step=".001" oninput="rhizome.send('/dac.gain',[value])">
+     /dac.gain
+<span id="/dac.gain.label"></span>
+</div>
+
+
+<button type="button" onclick='rhizome.send("/save", [1]);'>Save</button>
+<button type="button" onclick='rhizome.send("/load", [1]);'>Load</button>
+
+</body>
+
+</html>
