@@ -1,8 +1,10 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Rhizome Interface 1</title>
+  <title>Rhizome Interface</title>
   <script src="/rhizome/rhizome.js"></script>
+  <link rel="stylesheet" type="text/css" href="css/slider.css" />
+  <link rel="stylesheet" type="text/css" href="css/font.css" />
 
   <script>
      (function() {
@@ -14,7 +16,7 @@
          rhizome.on('message', function(addr, args) {
            //console.log('received:', addr, args)
            document.getElementById(addr+".slider").value = (args[0])
-           document.getElementById(addr+".label").innerHTML = (args[0])
+           document.getElementById(addr+".label").innerHTML = parseFloat(args[0]).toPrecision(5);
          })
          rhizome.on('connected', function() { console.log('connected') })
      })();
