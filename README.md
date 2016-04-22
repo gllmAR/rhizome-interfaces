@@ -20,4 +20,7 @@ Instructions
 * open the web page (websocket client)[http://localhost:8000/index.html](http://localhost:8000/index.html).
 
 * open the pd patch located github.com/gllmar/sigmundBlow
-* 
+
+* 2way-min is a static exemple demonstrating a 2 way communication with everything in the html
+* the dynamic exemple load a (fake)json file and parse it to create the interface.
+
