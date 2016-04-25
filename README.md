@@ -22,5 +22,10 @@ Instructions
 * open the pd patch located github.com/gllmar/sigmundBlow
 
 * 2way-min is a static exemple demonstrating a 2 way communication with everything in the html
-* the dynamic exemple load a (fake)json file and parse it to create the interface.
+* 2way-dynamic is a exemple that load a (fake)json from file interface.json and parse it to create the html interface. 
+* there is 4 supported features yet.  Work in progress
+	* label ()
+	* hFader (range:slider)
+	* push 	(button)
+	* progress (progress bar)
 
