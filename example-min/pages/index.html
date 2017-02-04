@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Rhizome Interface</title>
+  <script src="/rhizome/rhizome.js"></script>
+  <link rel="stylesheet" type="text/css" href="css/slider.css" />
+  <link rel="stylesheet" type="text/css" href="css/font.css" />
+
+  <script>
+  	var rhizomeClient
+     (function() {
+         console.log('starting....')
+         rhizomeClient = new rhizome.Client()
+         rhizomeClient.start(function(err) {
+           if (err) throw err
+           rhizomeClient.send('/sys/subscribe', ['/'])
+         })
+         rhizomeClient.on('message', function(addr, args) {
+           //console.log('received:', addr, args)
+           document.getElementById(addr+".slider").value = (args[0])
+           document.getElementById(addr+".label").innerHTML = parseFloat(args[0]).toPrecision(5);
+         })
+         rhizomeClient.on('connected', function() { console.log('connected') })
+     })();
+   </script>
+
+</head>
+
+<body >
+
+<h3>exemple-min</h3>
+
+<div>
+<input id="/adc.gain.slider" type="range" min="0" max="1" value="0" step=".001" oninput="rhizomeClient.send('/adc.gain',[parseFloat(value)])">
+     /adc.gain
+<span id="/adc.gain.label"></span>
+</div>
+
+<div>
+<input id="/vcf.freq.slider" type="range" min="0" max="4000" value="0" step="0" oninput="rhizomeClient.send('/vcf.freq',[parseFloat(value)])">
+     /vcf.freq
+<span id="/vcf.freq.label"></span>
+</div>
+
+<div>
+<input id="/vcf.q.slider" type="range" min="0" max="5" value="0" step=".001" oninput="rhizomeClient.send('/vcf.q',[parseFloat(value)])">
+     /vcf.q
+<span id="/vcf.q.label"></span>
+</div>
+
+<div>
+<input id="/rev.wet.slider" type="range" min="0" max="1" value="0" step=".001" oninput="rhizomeClient.send('/rev.wet',[parseFloat(value)])">
+     /rev.wet
+<span id="/rev.wet.label"></span>
+</div>
+
+<div>
+<input id="/dac.gain.slider" type="range" min="0" max="1" value="0" step=".001" oninput="rhizomeClient.send('/dac.gain',[parseFloat(value)])">
+     /dac.gain
+<span id="/dac.gain.label"></span>
+</div>
+
+
+<button type="button" onclick='rhizomeClient.send("/save", [1]);'>Save</button>
+<button type="button" onclick='rhizomeClient.send("/load", [1]);'>Load</button>
+
+</body>
+
+</html>

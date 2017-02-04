@@ -6,7 +6,8 @@ I started messing around with [rhizome](https://github.com/sebpiq/rhizome) and d
 
 I striped down the jquery stuff from the [base](https://github.com/sebpiq/rhizome/tree/master/examples/base) example and got inspired by the [metronome](https://github.com/sebpiq/rhizome/tree/master/examples/metronome) example.  
 
-The way I intend to use this is to be able to have multiple interfaces running on differents devices but having all access to shared control.  Every interfaces have the sames values.
+The way I intend to use this is to be able to have multiple interfaces running on differents devices but having all access to shared control.  
+Every interfaces have the sames values.
 
  
 
@@ -14,18 +15,28 @@ Instructions
 --------------
 
 * read and apply rhizome [readme](https://github.com/sebpiq/rhizome)
-* clone the repository 
-* go to the example folder 
-* run `rhizome config.js`
+	* install NPM https://docs.npmjs.com/getting-started/installing-node
+	* in a terminal execute : `npm install -g rhizome-server`
+	
+* clone this repository
+	* `git clone https://github.com/gllmAR/rhizome-interfaces` 
+	
+* go to the example folder in a terminal 
+	* example-min is a barebone example with where the interface is staticly build from `page/index.html`
+	* example-dynamic is a example where the interface is dynamically build from `page/interface.json`
+
+* run `rhizome config.js` in the selected example folder with a terminal
 * open the web page (websocket client)[http://localhost:8000/index.html](http://localhost:8000/index.html).
 
-* open the pd patch located github.com/gllmar/sigmundBlow
 
-* 2way-min is a static exemple demonstrating a 2 way communication with everything in the html
-* 2way-dynamic is a exemple that load a (fake)json from file interface.json and parse it to create the html interface. 
-* there is 4 supported features yet.  Work in progress
+* these two interaface are designed to work with this pd patch 
+	* github.com/gllmar/sigmundBlow
+
+* make your own! 
+
+* there is 4 supported features yet.  
 	* label ()
 	* hFader (range:slider)
 	* push 	(button)
-	* progress (progress bar)
+	* progress (progress bar) 
 

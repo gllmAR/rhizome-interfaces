@@ -1,10 +1,15 @@
+var rhizomeClient
+
 (function() {
-    console.log('starting....')
-    rhizome.start(function(err) {
+
+    console.log('starting....')  
+    rhizomeClient = new rhizome.Client()
+         
+    rhizomeClient.start(function(err) {
         if (err) throw err
-        rhizome.send('/sys/subscribe', ['/'])
+        rhizomeClient.send('/sys/subscribe', ['/'])
     })
-    rhizome.on('message', function(addr, args) {
+    rhizomeClient.on('message', function(addr, args) {
 
         switch (document.getElementById(addr).className) {
             case "hFader":
@@ -26,7 +31,7 @@
             default:
         }
     })
-    rhizome.on('connected', function() {
+    rhizomeClient.on('connected', function() {
         console.log('connected')
     })
 })();
@@ -69,7 +74,7 @@ function loadInterface() {
                 x.min = myInterface.interface[i].min;
                 x.max = myInterface.interface[i].max;
                 x.step = myInterface.interface[i].step;
-                x.setAttribute("oninput", "rhizome.send(" + "'/" + myInterface.interface[i].name + "'" + ",[parseFloat(value)])")
+                x.setAttribute("oninput", "rhizomeClient.send(" + "'/" + myInterface.interface[i].name + "'" + ",[parseFloat(value)])")
                 y.innerHTML = '/' + myInterface.interface[i].name + " ";
                 z.id = '/' + myInterface.interface[i].name + ".label"
                 document.body.appendChild(y);
@@ -84,7 +89,7 @@ function loadInterface() {
                 var x = document.createElement("BUTTON");
                 x.id = '/' + myInterface.interface[i].name;
                 x.setAttribute("class", myInterface.interface[i].class)
-                x.setAttribute("onclick", "rhizome.send(" + "'/" + myInterface.interface[i].name + "'" + ",[parseFloat(1)])")
+                x.setAttribute("onclick", "rhizomeClient.send(" + "'/" + myInterface.interface[i].name + "'" + ",[parseFloat(1)])")
                 x.innerHTML = '/' + myInterface.interface[i].name + " ";
                 document.body.appendChild(x);
                 break;
